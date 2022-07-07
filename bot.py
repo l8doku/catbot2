@@ -109,7 +109,7 @@ def main():
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
                           url_path=TOKEN,
-                          webhook_url=f"https://{NAME}.herokuapp.com/{TOKEN}")
+                          webhook_url=f"https://{NAME}.herokuapp.com/{os.getenv("TOKEN")}")
 
     updater.idle()
 
