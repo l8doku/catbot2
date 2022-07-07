@@ -90,6 +90,9 @@ Send /cat to get a cat'''
 
 def main():
     updater = Updater(os.getenv("TOKEN"))
+
+    PORT = os.environ.get('PORT')
+    NAME = "l8doku-telegram-bot2"
     
     dispatcher = updater.dispatcher
     dispatcher.add_handler(CommandHandler("start", help_command))
@@ -103,7 +106,10 @@ def main():
     
     # dispatcher.add_handler(MessageHandler(Filters.photo, save_photo_id))
     
-    updater.start_polling()
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=TOKEN,
+                          webhook_url=f"https://{NAME}.herokuapp.com/{TOKEN}")
 
     updater.idle()
 
