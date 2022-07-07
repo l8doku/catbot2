@@ -93,6 +93,7 @@ def main():
 
     PORT = os.environ.get('PORT')
     NAME = "l8doku-telegram-bot2"
+    TOKEN = os.getenv("TOKEN")
     
     dispatcher = updater.dispatcher
     dispatcher.add_handler(CommandHandler("start", help_command))
@@ -109,7 +110,7 @@ def main():
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
                           url_path=TOKEN,
-                          webhook_url=f"https://{NAME}.herokuapp.com/{os.getenv("TOKEN")}")
+                          webhook_url=f"https://{NAME}.herokuapp.com/{TOKEN}")
 
     updater.idle()
 
